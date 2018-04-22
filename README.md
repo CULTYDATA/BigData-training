@@ -63,59 +63,11 @@ Use case :
 ## 9. Big data et Machine Learning
 - Regression with spark
 
-docker run --name cassandra1 -m 2g -d cassandra:3.0.4 
 
-docker ps
+## 10. Cassandra
+https://datastax.github.io/python-driver/getting_started.html
+http://b3d.bdpedia.fr/cassandra_tp.html
 
-docker logs cassandra1
-
-docker inspect --format='{{ .NetworkSettings.IPAddress }}' cassandra1
-
-docker run -it --link cassandra1 --rm cassandra:3.0.4 sh -c 'exec cqlsh 172.17.0.2'
-
-docker run --name cassandra2 -m 2g -d -e CASSANDRA_SEEDS="$(docker inspect --format='{{.NetworkSettings.IPAddress }}' cassandra1)" cassandra:3.0.4
-
-docker exec -i -t cassandra1 sh -c 'nodetool status'
-
-
-Code cql :
-
-CREATE KEYSPACE demo WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
-USE demo;
-SELECT * FROM system.schema_keyspaces;
-ALTER KEYSPACE demo WITH strategy_class=SimpleStrategy AND strategy_options:replication_factor=2;
-DROP KEYSPACE demo;
-
-CREATE TABLE Persons (
-  familyName varchar, 
-  firstName varchar, 
-  age int, 
-  address varchar,
-  PRIMARY KEY(familyName));
-
-SELECT columnfamily_name FROM schema_columnfamilies WHERE keyspace_name = 'demo';
-
-ELECT column_name FROM schema_columns WHERE keyspace_name = 'cassandrademocql' and columnfamily_name = 'persons';
-
-ALTER TABLE Persons ADD phone VARCHAR;
-
-DROP COLUMNFAMILY Persons;
-
-USE cassandrademocql;
-INSERT INTO Persons (familyName, firstName, age, address,phone) VALUES ('BARON', 'Mickael', 36, 'Poitiers', '+33549498073');
-
-
-SELECT * FROM cassandrademocql.Persons;
-
-UPDATE cassandrademocql.persons SET firstname = 'Keulkeul' WHERE familyname = 'BARON';
-
-DELETE FROM Persons WHERE familyname='BARON';
-
-nodetool -h localhost -p 7199 status
-
-nodetool -h localhost -p 7199 cfstats
-
-nodetool -h localhost -p 7199 info
 
 
 
