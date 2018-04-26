@@ -46,3 +46,14 @@ def handle_error(exception):
 
 future = session.execute_async(query)
 future.add_callbacks(handle_success, handle_error)
+
+
+docker system prune
+docker image prune -a
+
+
+https://www.cloudera.com/documentation/enterprise/5-9-x/topics/cm_bdr_howto_hdfs.html
+
+http://blog.xebia.fr/2013/06/28/votre-premiere-installation-hadoop/
+
+

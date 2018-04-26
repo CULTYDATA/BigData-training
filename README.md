@@ -60,12 +60,16 @@ Use case :
 ## 8. Apache spark Zeppeline
 - Use Zeppeline for wc distributed computing
 
-## 9. Big data et Machine Learning
-- Regression with spark
+## 9. [Big data et Machine Learning](https://fr.hortonworks.com/tutorial/sentiment-analysis-with-apache-spark/)
+
+- Start to improve YARN/SPARK jvm
+
+
 
 
 ## 10. Cassandra
 https://datastax.github.io/python-driver/getting_started.html
+
 http://b3d.bdpedia.fr/cassandra_tp.html
 
 
